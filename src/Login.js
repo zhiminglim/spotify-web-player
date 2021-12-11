@@ -8,7 +8,7 @@ function Login() {
                     Login with Spotify 
                 </a>
                 <a className="btn-spotify" href="/test" >
-                    Test API
+                    Test
                 </a>
             </header>
         </div>
