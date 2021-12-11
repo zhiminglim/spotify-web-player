@@ -1,6 +1,7 @@
 import React from 'react';
 
 function Login() {
+    console.log("[Login] vercel env = " + process.env.VERCEL_ENV)
     return (
         <div className="App">
             <header className="App-header">
