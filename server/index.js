@@ -10,14 +10,7 @@ dotenv.config()
 
 var spotify_client_id = process.env.SPOTIFY_CLIENT_ID
 var spotify_client_secret = process.env.SPOTIFY_CLIENT_SECRET
-var appEnv = process.env.VERCEL_ENV
-var spotify_redirect_uri = null
-
-if (appEnv == 'development') {
-  spotify_redirect_uri = 'http://localhost:3000/auth/callback'
-} else {
-  spotify_redirect_uri = process.env.VERCEL_URL + '/auth/callback'
-}
+var spotify_redirect_uri = 'https://spotify-web-player-lovat.vercel.app/auth/callback'
 
 
 var generateRandomString = function (length) {
