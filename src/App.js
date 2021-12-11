@@ -12,7 +12,12 @@ function App() {
     console.log("[App] useEffect...")
     async function getToken() {
       const response = await fetch('/auth/token');
+
+      console.log("[App] response: ");
+      console.log(response);
       const json = await response.json();
+      console.log("[App] json: ");
+      console.log(json);
       setToken(json.access_token);
     }
 
