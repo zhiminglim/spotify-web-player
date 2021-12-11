@@ -28,6 +28,10 @@ var app = express();
 
 app.use(express.static(path.join(__dirname, '../build')));
 
+app.get('/test', (req, res) => {
+  res.send("Hello testing is ok");
+})
+
 app.get('/auth/login', (req, res) => {
 
   console.log("inside auth login")
