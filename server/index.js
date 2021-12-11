@@ -30,6 +30,8 @@ app.use(express.static(path.join(__dirname, '../build')));
 
 app.get('/auth/login', (req, res) => {
 
+  console.log("inside auth login")
+
   var scope = "streaming user-read-email user-read-private"
   var state = generateRandomString(16);
 
@@ -41,10 +43,14 @@ app.get('/auth/login', (req, res) => {
     state: state
   })
 
+  console.log("inside auth login: redirecting to authorize...")
+
   res.redirect('https://accounts.spotify.com/authorize/?' + auth_query_parameters.toString());
 })
 
 app.get('/auth/callback', (req, res) => {
+
+  console.log("inside auth callback: starting...")
 
   var code = req.query.code;
 
@@ -62,6 +68,8 @@ app.get('/auth/callback', (req, res) => {
     json: true
   };
 
+  console.log("inside auth callback: request posting...")
+
   request.post(authOptions, function(error, response, body) {
     if (!error && response.statusCode === 200) {
       access_token = body.access_token;
@@ -72,6 +80,8 @@ app.get('/auth/callback', (req, res) => {
 })
 
 app.get('/auth/token', (req, res) => {
+  console.log("inside auth token: starting...")
+
   res.json({ access_token: access_token})
 })
 
