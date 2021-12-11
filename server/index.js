@@ -1,6 +1,7 @@
 const express = require('express')
 const request = require('request');
 const dotenv = require('dotenv');
+const path = require('path');
 
 const port = 5000
 
@@ -10,7 +11,7 @@ dotenv.config()
 
 var spotify_client_id = process.env.SPOTIFY_CLIENT_ID
 var spotify_client_secret = process.env.SPOTIFY_CLIENT_SECRET
-var spotify_redirect_uri = 'https://spotify-web-player-lovat.vercel.app/auth/callback'
+var spotify_redirect_uri = 'http://localhost:3000/auth/callback'
 
 
 var generateRandomString = function (length) {
@@ -24,6 +25,8 @@ var generateRandomString = function (length) {
 };
 
 var app = express();
+
+app.use(express.static(path.join(__dirname, '../build')));
 
 app.get('/auth/login', (req, res) => {
 
@@ -75,3 +78,5 @@ app.get('/auth/token', (req, res) => {
 app.listen(port, () => {
   console.log(`Listening at http://localhost:${port}`)
 })
+
+
