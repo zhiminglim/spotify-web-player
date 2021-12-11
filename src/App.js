@@ -9,6 +9,7 @@ function App() {
 
   useEffect(() => {
 
+    console.log("[App] useEffect...")
     async function getToken() {
       const response = await fetch('/auth/token');
       const json = await response.json();
